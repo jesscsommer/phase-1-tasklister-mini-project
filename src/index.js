@@ -1,15 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // your code here
+  const form = document.querySelector('#create-task-form');
+
+  form.addEventListener('submit', handleTodo);
+
+  function handleTodo(event){
+    const newTodo = document.createElement('li');
+    const newTodoDescription = document.querySelector('#new-task-description').value;
+    newTodo.innerText = newTodoDescription;
+    document.querySelector('div#list > ul').append(newTodo);
+    event.preventDefault();
+  }
+
 });
-
-const submitBtn = document.querySelector('input[type=submit]');
-
-function handleTodo(event){
-  event.preventDefault();
-  const newTodo = document.createElement('li');
-  const newTodoDescription = document.querySelector('#new-task-description').value;
-  newTodo.innerText = newTodoDescription;
-  document.querySelector('div#list > ul').append(newTodo);
-}
-
-submitBtn.addEventListener('submit', handleTodo);
